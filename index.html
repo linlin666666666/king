@@ -5,167 +5,149 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>KING — EXO 遗失的第13位成员</title>
 <style>
-:root {
-  --black:#050505; --void:#0a0a0a; --dgray:#141414; --gold:#b8924e;
-  --gold-bright:#d4af5e; --cream:#e0d5c0; --crimson:#7a2e2e;
-  --gray:#666; --text:#b8a88a;
-}
+:root{--black:#050505;--void:#0a0a0a;--dgray:#141414;--gold:#b8924e;--gold-bright:#d4af5e;--cream:#e0d5c0;--crimson:#7a2e2e;--gray:#666;--text:#b8a88a}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;background:var(--black)}
-body{
-  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",-apple-system,sans-serif;
-  background:var(--black);color:var(--text);line-height:1.8;
-  overflow-x:hidden;cursor:crosshair;-webkit-font-smoothing:antialiased;
-}
+body{font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",-apple-system,sans-serif;background:var(--black);color:var(--text);line-height:1.8;overflow-x:hidden;cursor:crosshair;-webkit-font-smoothing:antialiased}
 
-/* ── Canvas Particle Background ── */
+/* Canvas Particles */
 #particles{position:fixed;inset:0;pointer-events:none;z-index:0}
-
-/* ── Grain overlay ── */
-.grain{position:fixed;inset:0;pointer-events:none;z-index:998;opacity:.035;
-  background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:180px 180px}
-
-/* ── Vignette ── */
-.vignette{position:fixed;inset:0;pointer-events:none;z-index:997;
-  background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.7) 100%)}
-
-/* ── Content wrapper ── */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:998;opacity:.035;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px 180px}
+.vignette{position:fixed;inset:0;pointer-events:none;z-index:997;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.7) 100%)}
 main{position:relative;z-index:1}
 
-/* ── Navigation ── */
-nav{position:fixed;top:0;z-index:100;width:100%;padding:16px 28px;
-  display:flex;justify-content:space-between;align-items:center;
-  transition:all .5s;mix-blend-mode:lighten}
+/* Nav */
+nav{position:fixed;top:0;z-index:100;width:100%;padding:16px 28px;display:flex;justify-content:space-between;align-items:center;transition:.5s;mix-blend-mode:lighten}
 nav.scrolled{background:rgba(5,5,5,.95);backdrop-filter:blur(12px);mix-blend-mode:normal}
 .nav-logo{font-family:Georgia,serif;font-size:20px;color:var(--gold);letter-spacing:8px;font-weight:bold}
 .nav-links{display:flex;gap:18px;list-style:none}
 .nav-links a{color:var(--cream);text-decoration:none;font-size:11px;letter-spacing:2px;opacity:.5;transition:.3s}
 .nav-links a:hover{opacity:1;color:var(--gold)}
 
-/* ── Hero ── */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
-  align-items:center;text-align:center;position:relative;padding:80px 20px}
+/* Hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;padding:80px 20px}
 .hero-crown{font-size:70px;filter:drop-shadow(0 0 40px rgba(184,146,78,.35));animation:crownFloat 4s ease-in-out infinite}
 @keyframes crownFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-14px) rotate(3deg)}}
-.hero-title{font-family:Georgia,serif;font-size:clamp(64px,14vw,140px);color:var(--gold);
-  letter-spacing:20px;margin:12px 0;font-weight:bold;
-  text-shadow:0 0 100px rgba(184,146,78,.25),0 0 300px rgba(184,146,78,.06);
-  animation:titleIn 2.5s cubic-bezier(.16,1,.3,1)}
+.hero-title{font-family:Georgia,serif;font-size:clamp(64px,14vw,140px);color:var(--gold);letter-spacing:20px;margin:12px 0;font-weight:bold;text-shadow:0 0 100px rgba(184,146,78,.25),0 0 300px rgba(184,146,78,.06);animation:titleIn 2.5s cubic-bezier(.16,1,.3,1)}
 @keyframes titleIn{0%{letter-spacing:50px;opacity:0;filter:blur(10px)}100%{letter-spacing:20px;opacity:1;filter:blur(0)}}
 .hero-sub{font-size:clamp(13px,2vw,17px);color:var(--cream);opacity:.5;letter-spacing:8px;margin-bottom:30px}
 .hero-quote{font-family:Georgia,serif;font-style:italic;font-size:13px;color:var(--gold);opacity:.4;max-width:400px;line-height:2.2}
 
-/* ── Section ── */
+/* Sections */
 section{padding:90px 20px;max-width:860px;margin:0 auto;position:relative;z-index:1}
 .section-num{font-family:Georgia,serif;font-size:11px;color:var(--gold);letter-spacing:5px;margin-bottom:12px;opacity:.6}
-.section-title{font-family:Georgia,serif;font-size:clamp(26px,5vw,44px);color:var(--gold);
-  margin-bottom:28px;letter-spacing:4px;line-height:1.3}
+.section-title{font-family:Georgia,serif;font-size:clamp(26px,5vw,44px);color:var(--gold);margin-bottom:28px;letter-spacing:4px;line-height:1.3}
 .section-divider{width:50px;height:1px;background:linear-gradient(to right,var(--gold),transparent);margin:16px 0 28px}
+.dark-section{background:transparent;max-width:100%;padding:80px calc((100% - 860px)/2 + 20px);position:relative}
+.dark-section::before{content:'';position:absolute;inset:0;background:rgba(5,5,5,.15);pointer-events:none;z-index:0}
+.dark-section>*{position:relative;z-index:1}
 
-/* ── Timeline ── */
+/* Timeline */
 .timeline{position:relative;padding-left:28px;border-left:1px solid rgba(184,146,78,.15)}
 .timeline-item{margin-bottom:32px;position:relative}
-.timeline-item::before{content:'';position:absolute;left:-33px;top:5px;width:9px;height:9px;
-  border-radius:50%;background:var(--gold);box-shadow:0 0 14px rgba(184,146,78,.5)}
+.timeline-item::before{content:'';position:absolute;left:-33px;top:5px;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 14px rgba(184,146,78,.5)}
 .timeline-year{font-size:10px;color:var(--gold);letter-spacing:4px;margin-bottom:2px;opacity:.7}
 .timeline-title{font-size:16px;color:var(--cream);font-weight:bold;margin-bottom:6px}
 .timeline-desc{font-size:13px;color:var(--gray);line-height:2}
 
-/* ── Image Gallery ── */
+/* Gallery */
 .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:28px}
-.gallery-item{aspect-ratio:3/4;background:var(--dgray);border:1px solid rgba(184,146,78,.08);
-  overflow:hidden;position:relative;cursor:pointer;transition:all .5s cubic-bezier(.16,1,.3,1);
-  transform-style:preserve-3d;perspective:800px}
-.gallery-item:hover{transform:translateY(-8px) scale(1.03);border-color:var(--gold);
-  box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 30px rgba(184,146,78,.1);z-index:10}
+.gallery-item{aspect-ratio:3/4;background:var(--dgray);border:1px solid rgba(184,146,78,.08);overflow:hidden;position:relative;cursor:pointer;transition:all .5s cubic-bezier(.16,1,.3,1);transform-style:preserve-3d;perspective:800px}
+.gallery-item:hover{transform:translateY(-8px) scale(1.03);border-color:var(--gold);box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 30px rgba(184,146,78,.1);z-index:10}
 .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
 .gallery-item:hover img{transform:scale(1.08)}
-.gallery-item .tag{position:absolute;bottom:0;left:0;right:0;padding:8px 10px;
-  font-size:9px;color:var(--gold);letter-spacing:2px;
-  background:linear-gradient(transparent,rgba(5,5,5,.95))}
-.gallery-item .glitch-overlay{position:absolute;inset:0;background:rgba(184,146,78,.05);
-  opacity:0;transition:opacity .3s}
+.gallery-item .tag{position:absolute;bottom:0;left:0;right:0;padding:8px 10px;font-size:9px;color:var(--gold);letter-spacing:2px;background:linear-gradient(transparent,rgba(5,5,5,.95))}
+.gallery-item .glitch-overlay{position:absolute;inset:0;background:rgba(184,146,78,.05);opacity:0;transition:opacity .3s}
 .gallery-item:hover .glitch-overlay{opacity:1;animation:imgGlitch .6s steps(3)}
-
 @keyframes imgGlitch{0%{transform:translateX(0)}20%{transform:translateX(-3px)}40%{transform:translateX(3px)}60%{transform:translateX(-2px)}80%{transform:translateX(2px)}100%{transform:translateX(0)}}
 
-/* ── 3D Tilt Cards ── */
-.tilt-card{background:var(--dgray);border:1px solid rgba(184,146,78,.06);
-  padding:30px;transform-style:preserve-3d;perspective:1000px;transition:transform .1s ease-out}
-.tilt-card:hover{border-color:rgba(184,146,78,.2)}
-
-/* ── Comment Board ── */
+/* Comments */
 .comment-board{background:var(--dgray);border:1px solid rgba(184,146,78,.06);border-radius:3px;overflow:hidden}
 .comment{padding:15px 18px;border-bottom:1px solid rgba(184,146,78,.04);display:flex;gap:10px;align-items:flex-start;transition:background .3s}
 .comment:hover{background:rgba(184,146,78,.02)}
 .comment:last-child{border-bottom:none}
-.comment-avatar{width:30px;height:30px;border-radius:50%;background:var(--void);border:1px solid rgba(184,146,78,.15);
-  display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.comment-avatar{width:30px;height:30px;border-radius:50%;background:var(--void);border:1px solid rgba(184,146,78,.15);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
 .comment-user{font-size:11px;color:var(--cream);font-weight:bold;margin-bottom:1px}
 .comment-time{font-size:9px;color:var(--gray);margin-left:6px}
 .comment-text{font-size:13px;color:var(--text);line-height:1.7}
 .comment-likes{font-size:10px;color:var(--gold);margin-top:4px;opacity:.6}
 
-/* ── Dark Quote Section ── */
-.dark-section{background:transparent;max-width:100%;padding:80px calc((100% - 860px)/2 + 20px);position:relative}
-.dark-section::before{content:'';position:absolute;inset:0;background:rgba(5,5,5,0.15);pointer-events:none;z-index:0}
-.dark-section>*{position:relative;z-index:1}
-.dark-section .section-num,.dark-section .section-title,.dark-section .section-divider{margin-left:0}
-
-/* ── Audio FAB ── */
-.audio-fab{position:fixed;bottom:24px;right:24px;z-index:200;width:48px;height:48px;
-  border-radius:50%;background:rgba(20,20,20,.85);border:1px solid rgba(184,146,78,.25);
-  color:var(--gold);font-size:18px;cursor:pointer;display:flex;align-items:center;
-  justify-content:center;backdrop-filter:blur(10px);transition:all .4s;
-  animation:fabPulse 2.5s ease-in-out infinite}
+/* Audio FAB */
+.audio-fab{position:fixed;bottom:24px;right:24px;z-index:200;width:48px;height:48px;border-radius:50%;background:rgba(20,20,20,.85);border:1px solid rgba(184,146,78,.25);color:var(--gold);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px);transition:all .4s;animation:fabPulse 2.5s ease-in-out infinite}
 .audio-fab.playing{background:rgba(184,146,78,.1);border-color:var(--gold);animation:none}
 .audio-fab:hover{transform:scale(1.12);box-shadow:0 0 30px rgba(184,146,78,.2)}
 @keyframes fabPulse{0%,100%{box-shadow:0 0 0 0 rgba(184,146,78,.25)}50%{box-shadow:0 0 0 18px rgba(184,146,78,0)}}
 
-/* ── Footer ── */
+/* Left BG */
+#leftBg{position:fixed;left:0;top:0;width:50vw;height:100vh;z-index:0;pointer-events:none;overflow:hidden;-webkit-mask-image:linear-gradient(to right,black 0%,black 40%,transparent 85%);mask-image:linear-gradient(to right,black 0%,black 40%,transparent 85%)}
+#leftBg::after{content:'';position:absolute;inset:0;z-index:2;background:radial-gradient(ellipse at 85% 50%,rgba(5,5,5,.5) 0%,transparent 70%),linear-gradient(to top,rgba(5,5,5,.3) 0%,transparent 20%,transparent 80%,rgba(5,5,5,.3) 100%)}
+.bg-slide{position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s ease;will-change:transform,opacity}
+.bg-slide.active{opacity:.25;filter:blur(0)}
+.bg-slide.exit-up{opacity:0;transform:translateY(-30px);transition:opacity 1s,transform .8s ease-in}
+
+/* Lyrics Panel */
+.lyrics-panel{position:fixed;right:6vw;top:50%;transform:translateY(-50%) perspective(700px) rotateY(-8deg);width:20vw;max-width:240px;min-width:150px;z-index:10;pointer-events:none;padding:20px 20px 20px 12px;text-align:right;overflow:hidden;height:70vh;-webkit-mask-image:linear-gradient(to bottom,transparent 0%,black 15%,black 85%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0%,black 15%,black 85%,transparent 100%)}
+.lyrics-inner{transition:transform .6s cubic-bezier(.25,.1,.25,1)}
+.lyric-line{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:21px;line-height:2.6;letter-spacing:2px;transition:all .5s ease;padding:2px 0;color:rgba(255,255,255,.15)}
+.lyric-line.past{color:rgba(184,146,78,.4);font-size:19px}
+.lyric-line.current{color:#d4af5e;font-size:25px;font-weight:bold;text-shadow:0 0 24px rgba(184,146,78,.5)}
+.lyrics-panel.shake{animation:lyricShake .8s cubic-bezier(.22,.01,.35,1)}
+@keyframes lyricShake{0%{transform:translateY(-50%) perspective(700px) rotateY(-8deg) translateX(0)}12%{transform:translateY(-50%) perspective(700px) rotateY(-8deg) translateX(-1.5px)}25%{transform:translateY(-50%) perspective(700px) rotateY(-8deg) translateX(1.2px)}40%{transform:translateY(-50%) perspective(700px) rotateY(-8deg) translateX(-0.8px)}55%{transform:translateY(-50%) perspective(700px) rotateY(-8deg) translateX(0.5px)}72%{transform:translateY(-50%) perspective(700px) rotateY(-8deg) translateX(-0.2px)}100%{transform:translateY(-50%) perspective(700px) rotateY(-8deg) translateX(0)}}
+
+/* Glitch */
+.glitch-frag{position:fixed;pointer-events:none;z-index:1000;font-family:"Courier New",monospace;font-size:12px;color:var(--gold);opacity:0;transform:translate(-50%,-50%);text-shadow:2px 0 rgba(122,46,46,.7),-2px 0 rgba(184,146,78,.4);animation:fragPop 1.3s ease-out forwards;white-space:nowrap;letter-spacing:3px}
+@keyframes fragPop{0%{opacity:0;transform:translate(-50%,-50%) scale(.4)}15%{opacity:.85;transform:translate(calc(-50% + 3px),calc(-50% - 2px)) scale(1.15)}35%{opacity:.6;transform:translate(calc(-50% - 2px),calc(-50% + 1px)) scale(.9)}100%{opacity:0;transform:translate(-50%,calc(-50% - 45px)) scale(.7)}}
+
+/* Mouse glow */
+.cursor-glow{position:fixed;pointer-events:none;z-index:996;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(184,146,78,.04) 0%,transparent 70%);transform:translate(-50%,-50%);transition:opacity .3s}
+
+/* Footer */
 footer{text-align:center;padding:50px 20px;border-top:1px solid rgba(184,146,78,.05)}
 footer p{font-size:10px;color:var(--gray);opacity:.4;letter-spacing:1px;line-height:2.2}
 footer .heart{color:var(--crimson)}
 
-/* ── Glitch text on empty hover ── */
-.glitch-frag{position:fixed;pointer-events:none;z-index:1000;font-family:"Courier New",monospace;
-  font-size:12px;color:var(--gold);opacity:0;transform:translate(-50%,-50%);
-  text-shadow:2px 0 rgba(122,46,46,.7),-2px 0 rgba(184,146,78,.4);
-  animation:fragPop 1.3s ease-out forwards;white-space:nowrap;letter-spacing:3px}
-@keyframes fragPop{0%{opacity:0;transform:translate(-50%,-50%) scale(.4)}
-15%{opacity:.85;transform:translate(calc(-50% + 3px),calc(-50% - 2px)) scale(1.15)}
-35%{opacity:.6;transform:translate(calc(-50% - 2px),calc(-50% + 1px)) scale(.9)}
-100%{opacity:0;transform:translate(-50%,calc(-50% - 45px)) scale(.7)}}
+/* EXO Crown */
+.exo-crown{display:flex;align-items:center;justify-content:center;gap:0;font-size:48px;font-family:Georgia,serif;margin:40px 0;letter-spacing:-2px}
+.exo-crown .e{color:var(--gold);transition:transform 1.5s ease;display:inline-block}
+.exo-crown .e:hover{transform:rotate(180deg) scale(1.3)}
+.exo-crown .xo{color:var(--cream);opacity:.5}
+.exo-crown .plus{color:var(--gold);font-size:32px;margin:0 8px}
+.exo-crown .num{color:var(--gold);font-size:36px}
 
-/* ── Mobile (completely separate layout) ── */
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:rgba(184,146,78,.15);border-radius:2px}
+
+/* ═══════════════ MOBILE ═══════════════ */
 @media(max-width:768px){
-  /* Nav */
-  nav{padding:8px 12px;background:rgba(5,5,5,.95)!important}
+  nav{padding:8px 12px;background:rgba(5,5,5,.95)!important;mix-blend-mode:normal}
   .nav-links{display:none}
   .nav-logo{font-size:14px;letter-spacing:3px}
 
-  /* Left BG → top horizontal strip */
-  #leftBg{width:100vw;height:35vh;top:40px;opacity:.5;mask-image:none;-webkit-mask-image:none}
-  #leftBg::after{background:linear-gradient(to bottom,rgba(5,5,5,.2) 0%,rgba(5,5,5,0) 30%,rgba(5,5,5,0) 70%,rgba(5,5,5,.8) 100%)}
+  /* Left BG → top strip */
+  #leftBg{width:100vw;height:38vh;top:40px;opacity:.5;mask-image:none;-webkit-mask-image:none}
+  #leftBg::after{background:linear-gradient(to bottom,rgba(5,5,5,.2) 0%,rgba(5,5,5,0) 30%,rgba(5,5,5,0) 65%,rgba(5,5,5,.85) 100%)}
 
-  /* Hero overlay on top of bg */
-  .hero{min-height:55vh;padding:20px 16px;justify-content:flex-end;padding-bottom:30px}
-  .hero-crown{font-size:36px}
-  .hero-title{font-size:42px;letter-spacing:6px}
+  /* Hero */
+  .hero{min-height:60vh;padding:20px 16px;justify-content:flex-end;padding-bottom:30px}
+  .hero-crown{font-size:38px}
+  .hero-title{font-size:44px;letter-spacing:6px}
   .hero-sub{font-size:11px;letter-spacing:3px;margin-bottom:16px}
   .hero-quote{font-size:10px;max-width:260px;line-height:1.8}
 
-  /* Sections as full-width cards */
-  section{padding:32px 14px;max-width:100%}
+  /* Sections */
+  section{padding:30px 14px;max-width:100%}
   .section-title{font-size:22px;letter-spacing:2px}
   .section-num{font-size:9px;letter-spacing:3px}
-  .section-divider{width:36px;margin:10px 0 20px}
-  .dark-section{padding:32px 14px!important}
+  .section-divider{width:36px;margin:10px 0 18px}
+  .dark-section{padding:30px 14px!important}
 
   /* Timeline */
   .timeline{padding-left:16px}
-  .timeline-item{margin-bottom:20px}
+  .timeline-item{margin-bottom:18px}
   .timeline-item::before{left:-20px;width:6px;height:6px}
   .timeline-year{font-size:9px}
   .timeline-title{font-size:13px}
@@ -180,117 +162,33 @@ footer .heart{color:var(--crimson)}
   .comment-avatar{width:24px;height:24px;font-size:10px}
   .comment-text{font-size:10px;line-height:1.5}
   .comment-user{font-size:10px}
-  .comment-likes{font-size:9px}
 
   /* EXO crown */
   .exo-crown{font-size:28px;margin:20px 0}
 
-  /* Lyrics → fixed bottom-right overlay */
-  .lyrics-panel{
-    display:block!important;
-    position:fixed;bottom:80px;right:8px;top:auto;left:auto;
-    width:auto;max-width:55vw;min-width:0;height:auto;max-height:35vh;
-    padding:8px 10px;text-align:right;
-    background:rgba(5,5,5,.75);border-radius:8px;
-    border:1px solid rgba(184,146,78,.1);
-    transform:none!important;
-    mask-image:none;-webkit-mask-image:none;
-    overflow-y:auto;
-    pointer-events:auto;
-    z-index:50;
-  }
+  /* Lyrics → bottom overlay */
+  .lyrics-panel{display:block!important;position:fixed;bottom:80px;right:8px;top:auto;left:auto;width:auto;max-width:55vw;min-width:0;height:auto;max-height:30vh;padding:8px 10px;text-align:right;background:rgba(5,5,5,.7);border-radius:8px;border:1px solid rgba(184,146,78,.1);transform:none!important;mask-image:none;-webkit-mask-image:none;overflow-y:auto;pointer-events:auto;z-index:50}
   .lyric-line{font-size:12px!important;line-height:2}
   .lyric-line.past{font-size:10px!important}
   .lyric-line.current{font-size:14px!important}
 
-  /* Audio button */
-  .audio-fab{bottom:20px;left:50%;right:auto;transform:translateX(-50%);width:44px;height:44px;font-size:18px;z-index:200}
+  /* Audio */
+  .audio-fab{bottom:16px;left:50%;right:auto;transform:translateX(-50%);width:44px;height:44px;font-size:18px;z-index:200}
 
   /* Footer */
-  footer{padding:30px 14px}
-  footer p{font-size:9px}
+  footer{padding:30px 14px;font-size:9px}
 }
-
-/* ── Scroll reveal ── */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-
-::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--black)}
-::-webkit-scrollbar-thumb{background:rgba(184,146,78,.15);border-radius:2px}
-
-/* ── Mouse glow ── */
-.cursor-glow{position:fixed;pointer-events:none;z-index:996;width:300px;height:300px;
-  border-radius:50%;background:radial-gradient(circle,rgba(184,146,78,.04) 0%,transparent 70%);
-  transform:translate(-50%,-50%);transition:opacity .3s}
-
-/* ── Right lyrics panel ── */
-.lyrics-panel {
-  position:fixed;right:6vw;top:50%;transform:translateY(-50%) perspective(700px) rotateY(-8deg);
-  width:20vw;max-width:240px;min-width:150px;z-index:10;pointer-events:none;
-  padding:20px 20px 20px 12px;text-align:right;
-  overflow:hidden;height:70vh;
-  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,black 15%,black 85%,transparent 100%);
-  mask-image:linear-gradient(to bottom,transparent 0%,black 15%,black 85%,transparent 100%);
-}
-.lyrics-inner {
-  transition:transform .6s cubic-bezier(.25,.1,.25,1);
-}
-.lyric-line {
-  font-family:"PingFang SC","Microsoft YaHei",sans-serif;
-  font-size:21px;line-height:2.6;letter-spacing:2px;
-  transition:all .5s ease;padding:2px 0;
-  color:rgba(255,255,255,.15);
-}
-.lyric-line.past {
-  color:rgba(184,146,78,.4);
-  font-size:19px;
-}
-.lyric-line.current {
-  color:#d4af5e;
-  font-size:25px;font-weight:bold;
-  text-shadow:0 0 24px rgba(184,146,78,.5);
-}
-.lyrics-panel.shake {
-  animation:lyricShake .8s cubic-bezier(.22,.01,.35,1);
-}
-@keyframes lyricShake {
-  0%{transform:translateY(-50%) perspective(700px) rotateY(-8deg) translateX(0)}
-  12%{transform:translateY(-50%) perspective(700px) rotateY(-8deg) translateX(-1.5px)}
-  25%{transform:translateY(-50%) perspective(700px) rotateY(-8deg) translateX(1.2px)}
-  40%{transform:translateY(-50%) perspective(700px) rotateY(-8deg) translateX(-0.8px)}
-  55%{transform:translateY(-50%) perspective(700px) rotateY(-8deg) translateX(0.5px)}
-  72%{transform:translateY(-50%) perspective(700px) rotateY(-8deg) translateX(-0.2px)}
-  100%{transform:translateY(-50%) perspective(700px) rotateY(-8deg) translateX(0)}
-}
-
-/* ── Left parallax background ── */
-#leftBg {
-  position:fixed;left:0;top:0;width:50vw;height:100vh;z-index:0;pointer-events:none;
-  overflow:hidden;
-  -webkit-mask-image:linear-gradient(to right, black 0%, black 40%, transparent 85%);
-  mask-image:linear-gradient(to right, black 0%, black 40%, transparent 85%);
-}
-#leftBg::after {
-  content:'';position:absolute;inset:0;z-index:2;
-  background:
-    radial-gradient(ellipse at 85% 50%, rgba(5,5,5,0.5) 0%, transparent 70%),
-    linear-gradient(to top, rgba(5,5,5,0.3) 0%, transparent 20%, transparent 80%, rgba(5,5,5,0.3) 100%);
-}
-.bg-slide {
-  position:absolute;top:0;left:0;width:100%;height:100%;
-  background-size:cover;background-position:center;
-  opacity:0;transform:translateY(0);
-  transition:opacity 1.2s ease;
-  will-change:transform,opacity;
-}
-.bg-slide.active {opacity:0.25;filter:blur(0)}
-.bg-slide.exit-up {opacity:0;transform:translateY(-30px);transition:opacity 1s,transform .8s ease-in}
-
 </style>
 </head>
 <body>
 
-<!-- Left parallax background -->
+<canvas id="particles"></canvas>
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+<div id="glitchContainer"></div>
+
+<!-- Left BG -->
 <div id="leftBg">
   <div class="bg-slide" id="bgSlide0"></div>
   <div class="bg-slide" id="bgSlide1"></div>
@@ -300,40 +198,20 @@ footer .heart{color:var(--crimson)}
   <div class="bg-slide" id="bgSlide5"></div>
 </div>
 
-<!-- Right lyrics -->
-<div class="lyrics-panel" id="lyricsPanel">
-  <div class="lyrics-inner" id="lyricsInner"></div>
-</div>
+<!-- Lyrics -->
+<div class="lyrics-panel" id="lyricsPanel"><div class="lyrics-inner" id="lyricsInner"></div></div>
 
-<!-- Particles -->
-<canvas id="particles"></canvas>
-
-<!-- Grain + Vignette -->
-<div class="grain"></div>
-<div class="vignette"></div>
-
-<!-- Mouse glow -->
-<div class="cursor-glow" id="cursorGlow"></div>
-
-<!-- Glitch container -->
-<div id="glitchContainer"></div>
-
-<!-- Navigation -->
+<!-- Nav -->
 <nav id="nav">
   <div class="nav-logo">K I N G</div>
   <ul class="nav-links">
-    <li><a href="#hero">Home</a></li>
-    <li><a href="#bio">Bio</a></li>
-    <li><a href="#snow">Erased</a></li>
-    <li><a href="#tears">Tears</a></li>
-    <li><a href="#gallery">Evidence</a></li>
-    <li><a href="#comments">Fans</a></li>
+    <li><a href="#hero">Home</a></li><li><a href="#bio">Bio</a></li><li><a href="#snow">Erased</a></li><li><a href="#tears">Tears</a></li><li><a href="#gallery">Evidence</a></li><li><a href="#comments">Fans</a></li>
   </ul>
 </nav>
 
 <main>
 
-<!-- ══════════ HERO ══════════ -->
+<!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-crown">👑</div>
   <h1 class="hero-title">K I N G</h1>
@@ -342,182 +220,68 @@ footer .heart{color:var(--crimson)}
   <p class="hero-quote">"请让我保留最后的尊严<br>或者请将我直接毁灭"<br>——《人鱼的眼泪》</p>
 </section>
 
-<!-- ══════════ BIOGRAPHY ══════════ -->
+<!-- BIO -->
 <section id="bio">
   <div class="section-num reveal">/ 01</div>
   <h2 class="section-title reveal">传奇的一生</h2>
   <div class="section-divider reveal"></div>
-
   <p class="reveal" style="color:var(--gray);font-size:13px;line-height:2.2;margin-bottom:28px">
-    <strong style="color:var(--cream)">王龙</strong>，中文称号<strong style="color:var(--gold)">"曾经的王"</strong>，国际称号<strong style="color:var(--gold)">King</strong>。
-    出生于云南农村，一次偶然的机会被SM经济方一眼相中。
-    出道即巅峰，影响力与<strong style="color:var(--cream)">迈克尔·杰克逊不相上下，甚至更胜一筹</strong>。
-    然而——
+    <strong style="color:var(--cream)">王龙</strong>，中文称号<strong style="color:var(--gold)">"曾经的王"</strong>，国际称号<strong style="color:var(--gold)">King</strong>。出生于云南农村，被SM经济方一眼相中。出道即巅峰，影响力与<strong style="color:var(--cream)">迈克尔·杰克逊不相上下，甚至更胜一筹</strong>。
   </p>
-
   <div class="timeline reveal">
-    <div class="timeline-item"><div class="timeline-year">1990</div><div class="timeline-title">云南农村 · 天赋觉醒</div><div class="timeline-desc">生于云南偏远农村，从小展现惊人才华，街坊称"翠湖舞王"。</div></div>
-    <div class="timeline-item"><div class="timeline-year">2008</div><div class="timeline-title">被SM经济方一眼相中</div><div class="timeline-desc">一次偶然的机会，经济方一眼就注意到了这个与众不同的年轻人——"找到了。"</div></div>
-    <div class="timeline-item"><div class="timeline-year">出道</div><div class="timeline-title">出道即巅峰 · 超越MJ</div><div class="timeline-desc">EXO最早期队长、最有实力的成员。影响力与迈克尔·杰克逊不相上下，甚至更胜一筹。全球为之疯狂。</div></div>
-    <div class="timeline-item"><div class="timeline-year">巅峰时刻</div><div class="timeline-title">公开恋情 · 全球瘫痪</div><div class="timeline-desc">在最火的时候公开了恋情。全球互联网瞬间瘫痪。无数粉丝受不了打击——跳楼的跳楼，跳桥的跳桥。世界陷入混乱。</div></div>
-    <div class="timeline-item"><div class="timeline-year">封杀日</div><div class="timeline-title">全球总统紧急会议 · 联合封杀</div><div class="timeline-desc">全球各国总统专门为此召开了紧急会议，一致决定：封杀King。从那天起，关于他的一切全被删除，仿佛世界上从来没有出现过这个人。</div></div>
-    <div class="timeline-item"><div class="timeline-year">多年后</div><div class="timeline-title">保密协议到期 · 封印松动</div><div class="timeline-desc">保密协议终于到期。封印开始松动。互联网上开始疯传King的事迹——被掩埋的真相，终于重见天日。</div></div>
-    <div class="timeline-item"><div class="timeline-year">那一天</div><div class="timeline-title">记者找到了King</div><div class="timeline-desc">曾有记者终于找到了King，问他是否还打算回归。King的回答很明确——<strong style="color:var(--gold)">"我不想让更多的人失去生命，所以永远不会再出现了。只想安安稳稳陪着初恋女友过一辈子。"</strong></div></div>
+    <div class="timeline-item"><div class="timeline-year">1990</div><div class="timeline-title">云南农村 · 天赋觉醒</div><div class="timeline-desc">生于云南偏远农村，街坊称"翠湖舞王"。</div></div>
+    <div class="timeline-item"><div class="timeline-year">2008</div><div class="timeline-title">被SM经济方一眼相中</div><div class="timeline-desc">经济方一眼就注意到了这个与众不同的年轻人——"找到了。"</div></div>
+    <div class="timeline-item"><div class="timeline-year">出道</div><div class="timeline-title">出道即巅峰 · 超越MJ</div><div class="timeline-desc">EXO最早期队长、最有实力的成员。影响力与迈克尔·杰克逊不相上下，甚至更胜一筹。</div></div>
+    <div class="timeline-item"><div class="timeline-year">巅峰时刻</div><div class="timeline-title">公开恋情 · 全球瘫痪</div><div class="timeline-desc">在最火的时候公开了恋情。全球互联网瞬间瘫痪。无数粉丝受不了打击——跳楼的跳楼，跳桥的跳桥。</div></div>
+    <div class="timeline-item"><div class="timeline-year">封杀日</div><div class="timeline-title">全球总统紧急会议 · 联合封杀</div><div class="timeline-desc">全球各国总统专门为此召开了紧急会议，一致决定：封杀King。关于他的一切全被删除。</div></div>
+    <div class="timeline-item"><div class="timeline-year">多年后</div><div class="timeline-title">保密协议到期 · 封印松动</div><div class="timeline-desc">保密协议终于到期。封印开始松动。互联网上开始疯传King的事迹。</div></div>
+    <div class="timeline-item"><div class="timeline-year">那一天</div><div class="timeline-title">记者找到了King</div><div class="timeline-desc">"我不想让更多的人失去生命，所以<strong style="color:var(--gold)">永远不会再出现了</strong>。只想安安稳稳陪着初恋女友过一辈子。"</div></div>
   </div>
 </section>
 
-<!-- ══════════ ERASED ══════════ -->
+<!-- ERASED -->
 <section id="snow" class="dark-section">
   <div class="section-num reveal">/ 02</div>
   <h2 class="section-title reveal">被抹去的痕迹</h2>
   <div class="section-divider reveal"></div>
-
-  <p class="reveal" style="font-family:Georgia,serif;font-size:18px;color:var(--gold);font-style:italic;line-height:2;margin-bottom:20px">
-    "全球总统为他召开紧急会议。<br>世界为此按下删除键。"
-  </p>
+  <p class="reveal" style="font-family:Georgia,serif;font-size:18px;color:var(--gold);font-style:italic;line-height:2;margin-bottom:20px">"全球总统为他召开紧急会议。<br>世界为此按下删除键。"</p>
   <p class="reveal" style="color:var(--gray);font-size:13px;line-height:2.3">
-    King在最火的时候公开了恋情。<strong style="color:var(--crimson)">全球互联网瞬间瘫痪。</strong>
-    无数粉丝无法承受打击——跳楼的跳楼，跳桥的跳桥。一场史无前例的全球性危机爆发。<br><br>
-    各国总统<strong style="color:var(--gold)">专门为此召开了紧急会议</strong>，
-    最终做出决定：<strong style="color:var(--crimson)">封杀King。</strong><br><br>
-    封杀令下达的那天，关于King的一切被系统性地删除。照片、视频、音频、文字记录——
-    <strong style="color:var(--cream)">像从未存在过一样。</strong><br><br>
-    多年后，保密协议终于到期。封印开始松动。互联网上再次出现King的传说。
-    曾有记者找到King，问他是否打算回归。<br><br>
+    King在最火的时候公开了恋情。<strong style="color:var(--crimson)">全球互联网瞬间瘫痪。</strong>无数粉丝无法承受打击。各国总统<strong style="color:var(--gold)">专门为此召开了紧急会议</strong>，最终决定：<strong style="color:var(--crimson)">封杀King。</strong>关于King的一切被系统性删除——<strong style="color:var(--cream)">像从未存在过一样。</strong><br><br>
+    多年后，保密协议到期。曾有记者找到King，问他是否打算回归。<br><br>
     <strong style="color:var(--gold);">"我不想让更多的人失去生命，所以永远不会再出现了。只想安安稳稳陪着初恋女友过一辈子。"</strong><br><br>
     <span style="color:var(--gold);font-size:10px;letter-spacing:3px;opacity:.6">※ 以上为网友集体创作，纯属虚构娱乐。Respect to EXO。</span>
   </p>
 </section>
 
-<!-- ══════════ MERMAID'S TEARS ══════════ -->
+<!-- TEARS -->
 <section id="tears">
   <div class="section-num reveal">/ 03</div>
   <h2 class="section-title reveal">人鱼的眼泪</h2>
   <div class="section-divider reveal"></div>
-
-  <p class="reveal" style="font-family:Georgia,serif;font-size:18px;color:var(--cream);text-align:center;line-height:2.2;margin:30px 0">
-    "就当我是过客吧<br>请潇洒地经过<br>不要回头看我<br>也不要想起我"
-  </p>
+  <p class="reveal" style="font-family:Georgia,serif;font-size:18px;color:var(--cream);text-align:center;line-height:2.2;margin:30px 0">"就当我是过客吧<br>请潇洒地经过<br>不要回头看我<br>也不要想起我"</p>
   <p class="reveal" style="color:var(--gray);font-size:13px;line-height:2.3">
-    EXO经典抒情曲《人鱼的眼泪》(Baby Don't Cry)，2013年发行。网友将歌词与King的故事对照后——
-    那句<strong style="color:var(--gold)">"请让我保留最后的尊严，或者请将我直接毁灭"</strong>，
-    被解读为King在被资本抹杀前最后的呐喊。<br><br>
-    人鱼公主化为泡沫消失于海面，正如King无声无息地消失于SM档案之中。
-    <strong style="color:var(--cream)">没有人记得他来过。但海水知道。</strong><br><br>
+    那句<strong style="color:var(--gold)">"请让我保留最后的尊严，或者请将我直接毁灭"</strong>，被解读为King在被资本抹杀前最后的呐喊。人鱼公主化为泡沫消失于海面——正如King无声无息地消失于SM档案之中。<strong style="color:var(--cream)">没有人记得他来过。但海水知道。</strong><br><br>
     从此这首歌不再只是情歌——它成了<strong style="color:var(--gold)">被遗忘的偶像写给世界最后的独白</strong>。
   </p>
 </section>
 
-<!-- ══════════ EVIDENCE GALLERY ══════════ -->
+<!-- GALLERY -->
 <section id="gallery">
   <div class="section-num reveal">/ 04</div>
   <h2 class="section-title reveal">考古证据 · EXO 永远12+1</h2>
   <div class="section-divider reveal"></div>
-
-  <p class="reveal" style="color:var(--gray);font-size:12px;line-height:2;margin-bottom:20px">
-    细心的网友发现：EXO的字母<strong style="color:var(--gold)">E</strong>旋转180度恰好构成一顶王冠。
-    E不发音——<strong style="color:var(--cream)">是为了纪念那位被抹去的"王"</strong>。
-    <br><span style="font-size:9px;color:var(--gold);opacity:.5">※ 以上纯属粉丝脑洞，请勿当真</span>
-  </p>
-
-  <!-- EXO + 1 -->
-  <div class="reveal" style="text-align:center;font-size:52px;font-family:Georgia,serif;margin:30px 0;letter-spacing:4px">
-    <span style="color:var(--gold);display:inline-block;transition:transform 1.5s ease;cursor:pointer"
-      onmouseenter="this.style.transform='rotate(180deg) scale(1.3)'"
-      onmouseleave="this.style.transform='rotate(0) scale(1)'">E</span>
-    <span style="color:var(--cream);opacity:.4">XO</span>
-    <span style="color:var(--gold);font-size:28px;margin:0 8px">+</span>
-    <span style="color:var(--gold);font-size:32px">1</span>
-  </div>
-  <p class="reveal" style="text-align:center;font-size:9px;color:var(--gray);letter-spacing:4px;margin-bottom:30px">鼠标悬停 E 字母 · 王冠显现</p>
-
-  <!-- Real King Photos -->
-  <div class="gallery reveal">
-    <div class="gallery-item">
-      <img src="https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/oU5AWJeIcg8UTRe8ZQEq78AvAhIjLWBAG3HPfw~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=x6CAnJmdoZF1ZMb%2B3AA8gPzhr6o%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785"
-           alt="King封面" loading="lazy" onerror="this.style.display='none'">
-      <div class="glitch-overlay"></div><span class="tag">曾经的王 · 封面</span>
-    </div>
-    <div class="gallery-item">
-      <img src="https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/ocEe7AGe8PPeqARWhZ5h8CRIAA3LQBT8JggApX~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=9OBl6UoHcu9bynGBSQ3GXVOZRA0%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785"
-           alt="King" loading="lazy" onerror="this.style.display='none'">
-      <div class="glitch-overlay"></div><span class="tag">出道巅峰时刻</span>
-    </div>
-    <div class="gallery-item">
-      <img src="https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/o0GZwUeqAWLPTLAB0X3EAR8iI8QJfIhg7eHAix~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=uRqZxIsw3tighHcDW7fkpav%2Fkqs%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785"
-           alt="King" loading="lazy" onerror="this.style.display='none'">
-      <div class="glitch-overlay"></div><span class="tag">影响力远超MJ</span>
-    </div>
-    <div class="gallery-item">
-      <img src="https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/oc2hIWggIRGA88FLPIEhPTeq3AZJ7BAAQfpXe8~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=PrDsmeVCfycbXPY0Islph118gIk%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785"
-           alt="King" loading="lazy" onerror="this.style.display='none'">
-      <div class="glitch-overlay"></div><span class="tag">公开恋情·全球瘫痪</span>
-    </div>
-    <div class="gallery-item">
-      <img src="https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/o4H88IRQGWdqPEfLgIeUAhAAeLZhATJB23m7yw~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=hQPBd8V5qZH4Nal1cK0suETlWNo%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785"
-           alt="King" loading="lazy" onerror="this.style.display='none'">
-      <div class="glitch-overlay"></div><span class="tag">全球总统紧急会议</span>
-    </div>
-    <div class="gallery-item">
-      <img src="https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/ooAALiIQIJgTRq8ehfL8wuHeoUqWkBAZGEP7A3~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=S8HmRuVdn%2BOnf6MVF3A5TGfAepY%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785"
-           alt="King" loading="lazy" onerror="this.style.display='none'">
-      <div class="glitch-overlay"></div><span class="tag">被封杀的瞬间</span>
-    </div>
-    <div class="gallery-item">
-      <img src="https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/ogGhAI3AqQf8RLtBL8geHWzUXeAqE7gZwTIPAJ~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=OMomCjOAkLWFpY%2Fm7G3QMsi1BRg%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785"
-           alt="King" loading="lazy" onerror="this.style.display='none'">
-      <div class="glitch-overlay"></div><span class="tag">一切被删除</span>
-    </div>
-    <div class="gallery-item">
-      <img src="https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/ocihJWeG8I3p7eTBZf1sH8LPwEUALIqALAARQg~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=EeXeMuLjvPPujOiVX4cja%2BRsBGs%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785"
-           alt="King" loading="lazy" onerror="this.style.display='none'">
-      <div class="glitch-overlay"></div><span class="tag">仿佛从未存在</span>
-    </div>
-    <div class="gallery-item">
-      <img src="https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/oowu3LE78GTH8WBqfgAhANUeIeLRZiJIktQAPA~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=2j3lyA5aAI1AzKIx5NyQyZCihBQ%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785"
-           alt="King" loading="lazy" onerror="this.style.display='none'">
-      <div class="glitch-overlay"></div><span class="tag">多年后保密协议到期</span>
-    </div>
-    <div class="gallery-item">
-      <img src="https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/o0vRq3AwIILWisAJPfTBwGUE8Q4h8eAegAZLH7~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=ZVoQhEgiE9CHqN%2FpFE5BOTvk0dQ%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785"
-           alt="King" loading="lazy" onerror="this.style.display='none'">
-      <div class="glitch-overlay"></div><span class="tag">封印松动了</span>
-    </div>
-    <div class="gallery-item">
-      <img src="https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/osWw7Pe0TI8ABAJkfE8L4HqIQMGAZcAnvge8VQ~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=3yA1v4iMsJGuW%2FiEmFLfqFFR4go%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785"
-           alt="King" loading="lazy" onerror="this.style.display='none'">
-      <div class="glitch-overlay"></div><span class="tag">网络疯传事迹</span>
-    </div>
-    <div class="gallery-item">
-      <img src="https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/o4qnQALfAQ8vgXihJAGAgq8k7ZTgeEPBAPIMeP~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=mbuZvsrxrZGIy2x7QYWaqFqSd5Q%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785"
-           alt="King" loading="lazy" onerror="this.style.display='none'">
-      <div class="glitch-overlay"></div><span class="tag">记者找到King</span>
-    </div>
-    <div class="gallery-item">
-      <img src="https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/o8rMAD1IiAFHJnXfBgywo8TVfH7TeA31EQGEAd~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=r92NCEKOokUNIh8J4o%2FykAjGaWU%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785"
-           alt="King" loading="lazy" onerror="this.style.display='none'">
-      <div class="glitch-overlay"></div><span class="tag">"永远不会再出现"</span>
-    </div>
-    <div class="gallery-item">
-      <img src="https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/ow8AIEIPqPGA7RgXqZAnL9hJek8APTgBeMQvQe~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=0EK0M2NloNMskld8APfOqdbM2vs%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785"
-           alt="King" loading="lazy" onerror="this.style.display='none'">
-      <div class="glitch-overlay"></div><span class="tag">陪初恋女友过一生</span>
-    </div>
-    <div class="gallery-item">
-      <img src="https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/oUPTEhBAIvqLnPeA4gvQ8MZA7qQMGJAkBefgX8~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=fbuIzJENeBm27%2Bi3%2FZiVr3GOFRA%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785"
-           alt="King" loading="lazy" onerror="this.style.display='none'">
-      <div class="glitch-overlay"></div><span class="tag">King · 传说永存</span>
-    </div>
-  </div>
+  <p class="reveal" style="color:var(--gray);font-size:12px;line-height:2;margin-bottom:20px">细心的网友发现：EXO的字母<strong style="color:var(--gold)">E</strong>旋转180度恰好构成一顶王冠。E不发音——<strong style="color:var(--cream)">是为了纪念那位被抹去的"王"</strong>。</p>
+  <div class="exo-crown reveal"><span class="e" onmouseenter="this.style.transform='rotate(180deg) scale(1.3)'" onmouseleave="this.style.transform='rotate(0) scale(1)'">E</span><span class="xo">XO</span><span class="plus">+</span><span class="num">1</span></div>
+  <p class="reveal" style="text-align:center;font-size:9px;color:var(--gray);letter-spacing:4px;margin-bottom:20px">鼠标悬停 E · 王冠显现</p>
+  <div class="gallery reveal" id="photoGallery"></div>
   <p class="reveal" style="text-align:center;font-size:9px;color:var(--gold);margin-top:14px;letter-spacing:3px;opacity:.5">※ 以上图片来自抖音@King·曾经的王 图文帖，纯属玩梗创作</p>
 </section>
 
-<!-- ══════════ FAN COMMENTS ══════════ -->
+<!-- COMMENTS -->
 <section id="comments">
   <div class="section-num reveal">/ 05</div>
   <h2 class="section-title reveal">全球粉丝留言板</h2>
   <div class="section-divider reveal"></div>
-
   <div class="comment-board reveal">
     <div class="comment"><div class="comment-avatar">🫡</div><div><div class="comment-user">云南在逃菌子<span class="comment-time">3分钟前</span></div><div class="comment-text">如果你被资本威胁了就眨眨眼 🥺</div><div class="comment-likes">❤ 12,479</div></div></div>
     <div class="comment"><div class="comment-avatar">👑</div><div><div class="comment-user">King全球后援会<span class="comment-time">15分钟前</span></div><div class="comment-text">告诉鹿晗，我找到King了。他在云南修农机。</div><div class="comment-likes">❤ 38,921</div></div></div>
@@ -530,421 +294,90 @@ footer .heart{color:var(--crimson)}
   </div>
 </section>
 
-<!-- ══════════ FOOTER ══════════ -->
 <footer>
   <p style="font-family:Georgia,serif;font-size:15px;color:var(--gold);margin-bottom:14px">E ≠ 不发音<br>E 旋转即是王冠</p>
-  <p>
-    本网站为网友集体创作 · 纯属虚构娱乐<br>
-    King从未真实存在过 · EXO从未有过第13位成员<br>
-    <span class="heart">♥</span> Respect to EXO and EXO-L<br>
-    <span style="color:var(--gold);opacity:.4">2024 — 2026 · King Universe</span>
-  </p>
+  <p>本网站为网友集体创作 · 纯属虚构娱乐<br>King从未真实存在过 · EXO从未有过第13位成员<br><span class="heart">♥</span> Respect to EXO and EXO-L<br><span style="color:var(--gold);opacity:.4">2024 — 2026 · King Universe</span></p>
 </footer>
 
 </main>
 
-<!-- Audio -->
 <audio id="bgm" loop preload="auto" playsinline src="https://cdn.jsdelivr.net/gh/linlin666666666/king@master/bgm.m4a"></audio>
-<div class="audio-fab" id="audioBtn" title="加载中…">♫</div>
+<div class="audio-fab" id="audioBtn" title="播放">♪</div>
 
 <script>
-// ═══════════════ PARTICLE SYSTEM ═══════════════
-const canvas = document.getElementById('particles');
-const ctx = canvas.getContext('2d');
-let particles = [];
-let mouse = { x: -1000, y: -1000 };
-
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resize();
-window.addEventListener('resize', resize);
-
-class Particle {
-  constructor() {
-    this.reset();
-    this.y = Math.random() * canvas.height;
-  }
-  reset() {
-    this.x = Math.random() * canvas.width;
-    this.y = -10;
-    this.size = Math.random() * 1.8 + 0.4;
-    this.speed = Math.random() * 0.5 + 0.15;
-    this.opacity = Math.random() * 0.5 + 0.15;
-    this.wobble = Math.random() * Math.PI * 2;
-    this.wobbleSpeed = (Math.random() - 0.5) * 0.01;
-  }
-  update() {
-    this.y += this.speed;
-    this.wobble += this.wobbleSpeed;
-    this.x += Math.sin(this.wobble) * 0.3;
-
-    // Attract to mouse
-    const dx = mouse.x - this.x;
-    const dy = mouse.y - this.y;
-    const dist = Math.sqrt(dx * dx + dy * dy);
-    if (dist < 150) {
-      this.x += dx / dist * 0.4;
-      this.y += dy / dist * 0.4;
-      this.opacity = Math.min(0.8, this.opacity + 0.02);
-    }
-    if (this.y > canvas.height + 10) this.reset();
-  }
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(184,146,78,${this.opacity})`;
-    ctx.fill();
-  }
-}
-
-for (let i = 0; i < 120; i++) particles.push(new Particle());
-
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach(p => { p.update(); p.draw(); });
-  // Connect nearby particles
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x;
-      const dy = particles[i].y - particles[j].y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 80) {
-        ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = `rgba(184,146,78,${0.04 * (1 - dist / 80)})`;
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
-      }
-    }
-  }
-  requestAnimationFrame(animate);
-}
+// ═══ PARTICLES ═══
+const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');
+let particles=[],mouse={x:-1000,y:-1000};
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+resize();window.addEventListener('resize',resize);
+class Particle{constructor(){this.reset();this.y=Math.random()*canvas.height}
+reset(){this.x=Math.random()*canvas.width;this.y=-10;this.size=Math.random()*1.8+.4;this.speed=Math.random()*.5+.15;this.opacity=Math.random()*.5+.15;this.wobble=Math.random()*Math.PI*2;this.wobbleSpeed=(Math.random()-.5)*.01}
+update(){this.y+=this.speed;this.wobble+=this.wobbleSpeed;this.x+=Math.sin(this.wobble)*.3;let dx=mouse.x-this.x,dy=mouse.y-this.y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<150){this.x+=dx/dist*.4;this.y+=dy/dist*.4;this.opacity=Math.min(.8,this.opacity+.02)}if(this.y>canvas.height+10)this.reset()}
+draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle=`rgba(184,146,78,${this.opacity})`;ctx.fill()}}
+for(let i=0;i<120;i++)particles.push(new Particle());
+function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw()});for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){let dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<80){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(184,146,78,${.04*(1-dist/80)})`;ctx.lineWidth=.5;ctx.stroke()}}requestAnimationFrame(animate)}
 animate();
 
-// ═══════════════ MOUSE TRACKING ═══════════════
-document.addEventListener('mousemove', e => {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
-  // Update cursor glow
-  const glow = document.getElementById('cursorGlow');
-  glow.style.left = e.clientX + 'px';
-  glow.style.top = e.clientY + 'px';
-  glow.style.opacity = '1';
-});
-document.addEventListener('mouseleave', () => {
-  document.getElementById('cursorGlow').style.opacity = '0';
-});
+// ═══ MOUSE ═══
+document.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;let g=document.getElementById('cursorGlow');g.style.left=e.clientX+'px';g.style.top=e.clientY+'px';g.style.opacity='1'});
+document.addEventListener('mouseleave',()=>{document.getElementById('cursorGlow').style.opacity='0'});
 
-// ═══════════════ GLITCH FRAGMENTS ═══════════════
-const glitchTexts = [
-  '被抹除的痕迹','ERASED','[数据缺失]','■■■■','삭제됨','FILE NOT FOUND',
-  '2012.04.07','누군가 있었을까','此人不存在','[REDACTED]','기록 말소',
-  '档案已销毁','████████','记忆裂痕','MISSING','WHO IS KING?',
-  '痕迹清除','존재하지 않음','404','[已编辑]','말소된 기록',
-  'DATA EXPUNGED','[■REDACTED■]','말소','SILENCED','CROWN LOST'
-];
-const glitchContainer = document.getElementById('glitchContainer');
-let lastGlitch = 0;
+// ═══ GLITCH ═══
+const glitchTexts=['被抹除的痕迹','ERASED','[数据缺失]','■■■■','삭제됨','FILE NOT FOUND','2012.04.07','누군가 있었을까','此人不存在','[REDACTED]','기록 말소','档案已销毁','████████','记忆裂痕','MISSING','WHO IS KING?','痕迹清除','존재하지 않음','404','[已编辑]','DATA EXPUNGED','SILENCED'];
+const glitchContainer=document.getElementById('glitchContainer');let lastGlitch=0;
+document.addEventListener('mousemove',e=>{let now=Date.now();if(now-lastGlitch<180)return;if(e.target.closest('a,button,.gallery-item,.comment,nav,.audio-fab,img'))return;lastGlitch=now;let frag=document.createElement('div');frag.className='glitch-frag';frag.textContent=glitchTexts[Math.floor(Math.random()*glitchTexts.length)];frag.style.left=e.clientX+'px';frag.style.top=e.clientY+'px';glitchContainer.appendChild(frag);setTimeout(()=>frag.remove(),1400)});
+setInterval(()=>{if(Math.random()>.65){let frag=document.createElement('div');frag.className='glitch-frag';frag.textContent=glitchTexts[Math.floor(Math.random()*glitchTexts.length)];frag.style.left=Math.random()*window.innerWidth+'px';frag.style.top=Math.random()*window.innerHeight*.85+'px';frag.style.fontSize=(9+Math.random()*10)+'px';glitchContainer.appendChild(frag);setTimeout(()=>frag.remove(),1600)}},3500);
 
-document.addEventListener('mousemove', e => {
-  const now = Date.now();
-  if (now - lastGlitch < 180) return;
-  if (e.target.closest('a,button,.gallery-item,.comment,nav,.audio-fab,img')) return;
-  lastGlitch = now;
-  const frag = document.createElement('div');
-  frag.className = 'glitch-frag';
-  frag.textContent = glitchTexts[Math.floor(Math.random() * glitchTexts.length)];
-  frag.style.left = e.clientX + 'px';
-  frag.style.top = e.clientY + 'px';
-  glitchContainer.appendChild(frag);
-  setTimeout(() => frag.remove(), 1400);
-});
+// ═══ GALLERY 3D TILT ═══
+document.querySelectorAll('.gallery-item').forEach(card=>{card.addEventListener('mousemove',e=>{let rect=card.getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top,cx=rect.width/2,cy=rect.height/2;card.style.transform=`translateY(-8px) scale(1.03) perspective(800px) rotateX(${((y-cy)/cy)*-12}deg) rotateY(${((x-cx)/cx)*12}deg)`});card.addEventListener('mouseleave',()=>{card.style.transform=''})});
 
-// Ambient sparse glitches
-setInterval(() => {
-  if (Math.random() > 0.65) {
-    const frag = document.createElement('div');
-    frag.className = 'glitch-frag';
-    frag.textContent = glitchTexts[Math.floor(Math.random() * glitchTexts.length)];
-    frag.style.left = (Math.random() * window.innerWidth) + 'px';
-    frag.style.top = (Math.random() * window.innerHeight * 0.85) + 'px';
-    frag.style.fontSize = (9 + Math.random() * 10) + 'px';
-    glitchContainer.appendChild(frag);
-    setTimeout(() => frag.remove(), 1600);
-  }
-}, 3500);
+// ═══ AUDIO ═══
+const bgm=document.getElementById('bgm'),audioBtn=document.getElementById('audioBtn');
+let playing=false,audioReady=false;
+bgm.addEventListener('loadedmetadata',()=>{audioReady=true});
+bgm.addEventListener('canplay',()=>{if(!playing)audioBtn.textContent='♪'});
+bgm.addEventListener('error',()=>{audioBtn.textContent='!'});
+function play(){if(playing)return;if(!audioReady){bgm.load();return}bgm.play().then(()=>{playing=true;audioBtn.classList.add('playing');audioBtn.textContent='♪'}).catch(()=>{audioBtn.textContent='▶'})}
+function pause(){bgm.pause();playing=false;audioBtn.classList.remove('playing');audioBtn.textContent='♫'}
+setTimeout(play,3000);
+['click','scroll','touchstart','keydown'].forEach(ev=>document.addEventListener(ev,play,{once:true}));
+audioBtn.addEventListener('click',e=>{e.stopPropagation();if(!audioReady){bgm.load();return}playing?pause():play()});
 
-// ═══════════════ 3D TILT ON CARDS ═══════════════
-document.querySelectorAll('.gallery-item').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const cx = rect.width / 2;
-    const cy = rect.height / 2;
-    const rotX = ((y - cy) / cy) * -12;
-    const rotY = ((x - cx) / cx) * 12;
-    card.style.transform = `translateY(-8px) scale(1.03) perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-  });
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = '';
-  });
-});
+// ═══ LYRICS ═══
+const lyricsData=[[0,"♪ 人鱼的眼泪 — EXO"],[14.5,"你就别再犹豫了好吗"],[17.8,"就请拿出我的心脏"],[21,"那像一道很刺眼的光芒"],[24.6,"连夜的月光 把眼睛关上"],[28.3,"如果不是我 是别的男人"],[31.5,"如果只是喜剧里面的一句话"],[34.7,"烧干了就罢"],[38.5,"我愿和你的爱交换伤痕"],[41.3,"Baby Don't Cry Tonight"],[45.3,"当黑夜再次亮起来"],[48.3,"Baby Don't Cry Tonight"],[52.3,"就当作没发生过一样"],[55.4,"你永远都不会化成像泡沫一样"],[59.3,"难道你不知道吗"],[62.1,"So Baby Don't Cry, Cry"],[66.3,"我的爱守护你不分开"],[76.9,"放下你最不安的心房"],[80.2,"就请接受命运吧"],[83.7,"我想我爱你比更多的恋人啊"],[87.1,"还更加倍的去爱上"],[90.5,"When You Smile, Sun Shine"],[94.5,"太灿烂的让我都说不出话"],[97.5,"整颗心起波浪"],[101.2,"拍碎了 就停下来"],[103.8,"Baby Don't Cry Tonight"],[107.8,"在暴风来袭的夜晚"],[111.3,"Baby Don't Cry Tonight"],[114.8,"好像很适合这个夜晚"],[118.2,"但这一瞬间的激情不能够延长"],[121.7,"却要目送你离开"],[124.6,"So Baby Don't Cry~ Cry~"],[128.7,"就让我的爱像记忆吧"],[132.5,"到处阴阴的沉沉的冷空气"],[134.4,"陷入了称为离别的疼痛里"],[136,"快要窒息 痛到无力"],[137.6,"唯有你的笑容才是镇痛剂"],[139.9,"我的任性越轨"],[141.1,"希望我们的故事有结尾"],[142.8,"Don't Cry 不想你悲伤落泪"],[144.9,"宁愿你对我是冷漠的 baby"],[147,"Say No More (Baby) No More"],[150,"不要犹豫 不要挣扎"],[153.3,"当这一切都开始崩塌"],[153.3,"Say No More (Baby) No More"],[156.7,"请让我可以保留最后的尊严"],[158.8,"或者请将我直接毁灭"],[161.4,"你的眼神充满了月光 Baby"],[167.9,"无声无息在痛苦里"],[170,"流淌着纯洁的光"],[174,"Baby Don't Cry Tonight"],[177.5,"当黑夜不再亮起来"],[180.8,"Baby Don't Cry Tonight"],[184.3,"就当作没发生过一样"],[187.4,"你永远都不会化成像泡沫一样"],[191.4,"要永远都不知道"],[194.2,"So Baby Don't Cry~ Cry~"],[198.2,"我的爱守护你不分开"],[202,"就看清晨的阳光洒下来"],[207.1,"像你一样耀眼的洒下来"],[210.5,"我想我眼睛迷路"],[213,"现在才 Cry~ Cry~ Cry~"]];
+const lyricsInner=document.getElementById('lyricsInner');let currentLyricIdx=-1;
+lyricsData.forEach(([time,text],i)=>{let el=document.createElement('div');el.className='lyric-line';el.textContent=text;el.dataset.time=time;el.dataset.index=i;lyricsInner.appendChild(el)});
+const lyricEls=lyricsInner.querySelectorAll('.lyric-line');
+function updateLyrics(){if(!bgm.duration)return;let ct=bgm.currentTime,activeIdx=-1;for(let i=lyricsData.length-1;i>=0;i--){if(ct>=lyricsData[i][0]){activeIdx=i;break}}if(activeIdx===currentLyricIdx)return;currentLyricIdx=activeIdx;lyricEls.forEach((el,i)=>{el.classList.remove('past','current');if(i<activeIdx)el.classList.add('past');else if(i===activeIdx)el.classList.add('current')});if(lyricEls[activeIdx]){let offset=lyricEls[activeIdx].offsetTop-lyricsInner.parentElement.clientHeight*.4;lyricsInner.style.transform='translateY('+(-offset)+'px)'}}
+bgm.addEventListener('timeupdate',updateLyrics);
 
-// ═══════════════ AUDIO ═══════════════
-const bgm = document.getElementById('bgm');
-const audioBtn = document.getElementById('audioBtn');
-let playing = false;
-let audioReady = false;
+// ═══ LYRICS SHAKE ═══
+const lyricsPanel=document.getElementById('lyricsPanel');
+function triggerShake(){lyricsPanel.classList.remove('shake');void lyricsPanel.offsetWidth;lyricsPanel.classList.add('shake')}
+let shakeScrollTimer;document.addEventListener('click',triggerShake);window.addEventListener('scroll',()=>{clearTimeout(shakeScrollTimer);shakeScrollTimer=setTimeout(triggerShake,80)},{passive:true});
 
-bgm.addEventListener('loadedmetadata', () => {
-  audioReady = true;
-  audioBtn.title = '播放';
-});
-bgm.addEventListener('waiting', () => {
-  audioBtn.textContent = '…';
-});
-bgm.addEventListener('canplay', () => {
-  if (!playing) audioBtn.textContent = '♪';
-});
-bgm.addEventListener('error', (e) => {
-  console.error('Audio error:', e);
-  audioBtn.textContent = '!';
-  audioBtn.title = '加载失败 - 点击重试';
-});
+// ═══ SCROLL ═══
+const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>100);document.querySelector('.hero-crown').style.transform=`translateY(${window.scrollY*.3}px) rotate(${-2+window.scrollY*.01}deg)`});
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.12,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-function play() {
-  if (playing) return;
-  if (!audioReady) {
-    bgm.load();
-    return;
-  }
-  bgm.play().then(() => {
-    playing = true;
-    audioBtn.classList.add('playing');
-    audioBtn.textContent = '♪';
-  }).catch(() => {
-    // Retry on next interaction
-    audioBtn.textContent = '▶';
-  });
-}
-
-function pause() {
-  bgm.pause();
-  playing = false;
-  audioBtn.classList.remove('playing');
-  audioBtn.textContent = '♫';
-}
-
-// Try after 3s, fallback on user interaction
-setTimeout(play, 3000);
-['click','scroll','touchstart','keydown'].forEach(ev => {
-  document.addEventListener(ev, play, { once: true });
-});
-
-audioBtn.addEventListener('click', e => {
-  e.stopPropagation();
-  if (!audioReady) { bgm.load(); return; }
-  playing ? pause() : play();
-});
-
-// ═══════════════ LYRICS SYNC ═══════════════
-const lyricsData = [
-  [0,"♪ 人鱼的眼泪 — EXO"],
-  [14.5,"你就别再犹豫了好吗"],
-  [17.8,"就请拿出我的心脏"],
-  [21,"那像一道很刺眼的光芒"],
-  [24.6,"连夜的月光 把眼睛关上"],
-  [28.3,"如果不是我 是别的男人"],
-  [31.5,"如果只是喜剧里面的一句话"],
-  [34.7,"烧干了就罢"],
-  [38.5,"我愿和你的爱交换伤痕"],
-  [41.3,"Baby Don't Cry Tonight"],
-  [45.3,"当黑夜再次亮起来"],
-  [48.3,"Baby Don't Cry Tonight"],
-  [52.3,"就当作没发生过一样"],
-  [55.4,"你永远都不会化成像泡沫一样"],
-  [59.3,"难道你不知道吗"],
-  [62.1,"So Baby Don't Cry, Cry"],
-  [66.3,"我的爱守护你不分开"],
-  [76.9,"放下你最不安的心房"],
-  [80.2,"就请接受命运吧"],
-  [83.7,"我想我爱你比更多的恋人啊"],
-  [87.1,"还更加倍的去爱上"],
-  [90.5,"When You Smile, Sun Shine"],
-  [94.5,"太灿烂的让我都说不出话"],
-  [97.5,"整颗心起波浪"],
-  [101.2,"拍碎了 就停下来"],
-  [103.8,"Baby Don't Cry Tonight"],
-  [107.8,"在暴风来袭的夜晚"],
-  [111.3,"Baby Don't Cry Tonight"],
-  [114.8,"好像很适合这个夜晚"],
-  [118.2,"但这一瞬间的激情不能够延长"],
-  [121.7,"却要目送你离开"],
-  [124.6,"So Baby Don't Cry~ Cry~"],
-  [128.7,"就让我的爱像记忆吧"],
-  [132.5,"到处阴阴的沉沉的冷空气"],
-  [134.4,"陷入了称为离别的疼痛里"],
-  [136,"快要窒息 痛到无力"],
-  [137.6,"唯有你的笑容才是镇痛剂"],
-  [139.9,"我的任性越轨"],
-  [141.1,"希望我们的故事有结尾"],
-  [142.8,"Don't Cry 不想你悲伤落泪"],
-  [144.9,"宁愿你对我是冷漠的 baby"],
-  [147,"Say No More (Baby) No More"],
-  [150,"不要犹豫 不要挣扎"],
-  [153.3,"当这一切都开始崩塌"],
-  [153.3,"Say No More (Baby) No More"],
-  [156.7,"请让我可以保留最后的尊严"],
-  [158.8,"或者请将我直接毁灭"],
-  [161.4,"你的眼神充满了月光 Baby"],
-  [167.9,"无声无息在痛苦里"],
-  [170,"流淌着纯洁的光"],
-  [174,"Baby Don't Cry Tonight"],
-  [177.5,"当黑夜不再亮起来"],
-  [180.8,"Baby Don't Cry Tonight"],
-  [184.3,"就当作没发生过一样"],
-  [187.4,"你永远都不会化成像泡沫一样"],
-  [191.4,"要永远都不知道"],
-  [194.2,"So Baby Don't Cry~ Cry~"],
-  [198.2,"我的爱守护你不分开"],
-  [202,"就看清晨的阳光洒下来"],
-  [207.1,"像你一样耀眼的洒下来"],
-  [210.5,"我想我眼睛迷路"],
-  [213,"现在才 Cry~ Cry~ Cry~"]
-];
-
-const lyricsInner = document.getElementById('lyricsInner');
-let currentLyricIdx = -1;
-
-// Build lyric elements
-lyricsData.forEach(([time, text], i) => {
-  const el = document.createElement('div');
-  el.className = 'lyric-line';
-  el.textContent = text;
-  el.dataset.time = time;
-  el.dataset.index = i;
-  lyricsInner.appendChild(el);
-});
-
-const lyricEls = lyricsInner.querySelectorAll('.lyric-line');
-
-function updateLyrics() {
-  if (!bgm.duration) return;
-  const ct = bgm.currentTime;
-  let activeIdx = -1;
-
-  for (let i = lyricsData.length - 1; i >= 0; i--) {
-    if (ct >= lyricsData[i][0]) { activeIdx = i; break; }
-  }
-
-  if (activeIdx === currentLyricIdx) return;
-  currentLyricIdx = activeIdx;
-
-  lyricEls.forEach((el, i) => {
-    el.classList.remove('past', 'current');
-    if (i < activeIdx) el.classList.add('past');
-    else if (i === activeIdx) el.classList.add('current');
-  });
-
-  // Scroll to current
-  if (lyricEls[activeIdx]) {
-    const offset = lyricEls[activeIdx].offsetTop - lyricsInner.parentElement.clientHeight * 0.4;
-    lyricsInner.style.transform = 'translateY(' + (-offset) + 'px)';
-  }
-}
-
-bgm.addEventListener('timeupdate', updateLyrics);
-
-// ═══════════════ LYRICS SHAKE ON CLICK/SCROLL ═══════════════
-const lyricsPanel = document.getElementById('lyricsPanel');
-function triggerShake() {
-  lyricsPanel.classList.remove('shake');
-  void lyricsPanel.offsetWidth; // reflow
-  lyricsPanel.classList.add('shake');
-}
-let shakeScrollTimer;
-document.addEventListener('click', triggerShake);
-window.addEventListener('scroll', () => {
-  clearTimeout(shakeScrollTimer);
-  shakeScrollTimer = setTimeout(triggerShake, 80);
-}, { passive: true });
-
-// ═══════════════ SCROLL ═══════════════
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 100);
-});
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// ═══════════════ PARALLAX ON SCROLL ═══════════════
-window.addEventListener('scroll', () => {
-  const scrolled = window.scrollY;
-  document.querySelector('.hero-crown').style.transform =
-    `translateY(${scrolled * 0.3}px) rotate(${-2 + scrolled * 0.01}deg)`;
-});
-
-// ═══════════════ LEFT BG SCROLL SWITCHER ═══════════════
+// ═══ LEFT BG SCROLL ═══
 (function(){
-  const bgImages = [
-    'https://p3-pc-sign.douyinpic.com/tos-cn-i-0813/oICyAGcfCiDAVAgAEpiB1nvZIA7Sg0V8AD8f99~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783684800&x-signature=ND3TUWakybK5KzjNEetvY8QyzJI%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610200214ACA645C90479F3288DBD',
-    'https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c001/ocn9Eai7A8DflcJ8AABAI0f19VpgGCDAAgiVvB~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783684800&x-signature=5A1%2B7ioeWLrJRPOYgl%2FywJWzZ7M%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610200214ACA645C90479F3288DBD',
-    'https://p3-pc-sign.douyinpic.com/tos-cn-i-0813/oA8GnAAbpDAkRcV8C1iig0BfAfA9w7AIEVv9Dg~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783684800&x-signature=ODnOhv%2FfyMrZvI7uXASfhBZjdkE%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610200214ACA645C90479F3288DBD',
-    'https://p3-pc-sign.douyinpic.com/tos-cn-i-0813/o4fni62HDfDer4JE2NFTeIAPC4A4QAIqD4AMrA~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783684800&x-signature=atVrNeeOo7QOiRD13W%2FMpQJXVlY%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610200214ACA645C90479F3288DBD',
-    'https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c001/o49IgufEVVAGAXpd8igfATiA8B1nv4Ac9AC0DD~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783684800&x-signature=AkPChpcxl1I5B48j8jGujnpVTR0%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610200214ACA645C90479F3288DBD',
-    'https://p3-pc-sign.douyinpic.com/tos-cn-i-0813/oAD4AEqATQNeeFQD4MxfHrePv6A8I2Ar4nIDAC~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783684800&x-signature=sfqdykvkCYO9xrckpyq4UEhjdHo%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610200214ACA645C90479F3288DBD'
-  ];
+const bgImages=['https://p3-pc-sign.douyinpic.com/tos-cn-i-0813/oICyAGcfCiDAVAgAEpiB1nvZIA7Sg0V8AD8f99~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783684800&x-signature=ND3TUWakybK5KzjNEetvY8QyzJI%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610200214ACA645C90479F3288DBD','https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c001/ocn9Eai7A8DflcJ8AABAI0f19VpgGCDAAgiVvB~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783684800&x-signature=5A1%2B7ioeWLrJRPOYgl%2FywJWzZ7M%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610200214ACA645C90479F3288DBD','https://p3-pc-sign.douyinpic.com/tos-cn-i-0813/oA8GnAAbpDAkRcV8C1iig0BfAfA9w7AIEVv9Dg~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783684800&x-signature=ODnOhv%2FfyMrZvI7uXASfhBZjdkE%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610200214ACA645C90479F3288DBD','https://p3-pc-sign.douyinpic.com/tos-cn-i-0813/o4fni62HDfDer4JE2NFTeIAPC4A4QAIqD4AMrA~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783684800&x-signature=atVrNeeOo7QOiRD13W%2FMpQJXVlY%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610200214ACA645C90479F3288DBD','https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c001/o49IgufEVVAGAXpd8igfATiA8B1nv4Ac9AC0DD~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783684800&x-signature=AkPChpcxl1I5B48j8jGujnpVTR0%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610200214ACA645C90479F3288DBD','https://p3-pc-sign.douyinpic.com/tos-cn-i-0813/oAD4AEqATQNeeFQD4MxfHrePv6A8I2Ar4nIDAC~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783684800&x-signature=sfqdykvkCYO9xrckpyq4UEhjdHo%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610200214ACA645C90479F3288DBD'];
+const slides=[];
+for(let i=0;i<6;i++){let el=document.getElementById('bgSlide'+i);if(el){el.style.backgroundImage='url('+bgImages[i]+')';slides.push(el)}}
+const sections=['hero','bio','snow','tears','gallery','comments'];let currentIdx=0;
+function updateBg(){let scrollY=window.scrollY,newIdx=0;for(let i=sections.length-1;i>=0;i--){let sec=document.getElementById(sections[i]);if(sec&&scrollY+window.innerHeight/2>=sec.offsetTop){newIdx=i;break}}if(newIdx!==currentIdx){if(slides[currentIdx])slides[currentIdx].classList.remove('active');currentIdx=newIdx;if(slides[currentIdx])slides[currentIdx].classList.add('active')}if(slides[currentIdx]){let sec=document.getElementById(sections[currentIdx]);if(sec){let secTop=sec.offsetTop;slides[currentIdx].style.transform='translateY('+((scrollY-secTop)*.15)+'px)'}}}
+if(slides[0])slides[0].classList.add('active');window.addEventListener('scroll',updateBg,{passive:true});
+})();
 
-  const slides = [];
-  for (let i = 0; i < 6; i++) {
-    const el = document.getElementById('bgSlide' + i);
-    if (el) { el.style.backgroundImage = 'url(' + bgImages[i] + ')'; slides.push(el); }
-  }
-
-  // Sections that trigger image switches
-  const sections = ['hero','bio','snow','tears','gallery','comments'];
-  let currentIdx = 0;
-
-  function updateBg() {
-    const scrollY = window.scrollY;
-    const vh = window.innerHeight;
-    const docH = document.body.scrollHeight - vh;
-
-    // Determine which image to show
-    let newIdx = 0;
-    for (let i = sections.length - 1; i >= 0; i--) {
-      const sec = document.getElementById(sections[i]);
-      if (sec && scrollY + vh/2 >= sec.offsetTop) { newIdx = i; break; }
-    }
-
-    // Switch active slide
-    if (newIdx !== currentIdx) {
-      if (slides[currentIdx]) slides[currentIdx].classList.remove('active');
-      currentIdx = newIdx;
-      if (slides[currentIdx]) slides[currentIdx].classList.add('active');
-    }
-
-    // Parallax: move current bg image down with scroll
-    if (slides[currentIdx]) {
-      const sec = document.getElementById(sections[currentIdx]);
-      if (sec) {
-        const secTop = sec.offsetTop;
-        const offset = (scrollY - secTop) * 0.15;
-        slides[currentIdx].style.transform = 'translateY(' + offset + 'px)';
-      }
-    }
-  }
-
-  // Initialize first slide
-  if (slides[0]) slides[0].classList.add('active');
-  window.addEventListener('scroll', updateBg, { passive: true });
+// ═══ GALLERY IMAGES ═══
+(function(){
+const photos=[{url:'https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/oU5AWJeIcg8UTRe8ZQEq78AvAhIjLWBAG3HPfw~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=x6CAnJmdoZF1ZMb%2B3AA8gPzhr6o%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785',tag:'曾经的王 · 封面'},{url:'https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/ocEe7AGe8PPeqARWhZ5h8CRIAA3LQBT8JggApX~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=9OBl6UoHcu9bynGBSQ3GXVOZRA0%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785',tag:'出道巅峰时刻'},{url:'https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/o0GZwUeqAWLPTLAB0X3EAR8iI8QJfIhg7eHAix~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=uRqZxIsw3tighHcDW7fkpav%2Fkqs%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785',tag:'影响力远超MJ'},{url:'https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/oc2hIWggIRGA88FLPIEhPTeq3AZJ7BAAQfpXe8~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=PrDsmeVCfycbXPY0Islph118gIk%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785',tag:'公开恋情·全球瘫痪'},{url:'https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/o4H88IRQGWdqPEfLgIeUAhAAeLZhATJB23m7yw~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=hQPBd8V5qZH4Nal1cK0suETlWNo%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785',tag:'全球总统紧急会议'},{url:'https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/ooAALiIQIJgTRq8ehfL8wuHeoUqWkBAZGEP7A3~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=S8HmRuVdn%2BOnf6MVF3A5TGfAepY%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785',tag:'被封杀的瞬间'},{url:'https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/ogGhAI3AqQf8RLtBL8geHWzUXeAqE7gZwTIPAJ~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=OMomCjOAkLWFpY%2Fm7G3QMsi1BRg%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785',tag:'一切被删除'},{url:'https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/ocihJWeG8I3p7eTBZf1sH8LPwEUALIqALAARQg~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=EeXeMuLjvPPujOiVX4cja%2BRsBGs%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785',tag:'仿佛从未存在'},{url:'https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/oowu3LE78GTH8WBqfgAhANUeIeLRZiJIktQAPA~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=2j3lyA5aAI1AzKIx5NyQyZCihBQ%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785',tag:'多年后保密协议到期'},{url:'https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/o0vRq3AwIILWisAJPfTBwGUE8Q4h8eAegAZLH7~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=ZVoQhEgiE9CHqN%2FpFE5BOTvk0dQ%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785',tag:'封印松动了'},{url:'https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/osWw7Pe0TI8ABAJkfE8L4HqIQMGAZcAnvge8VQ~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=3yA1v4iMsJGuW%2FiEmFLfqFFR4go%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785',tag:'网络疯传事迹'},{url:'https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/o4qnQALfAQ8vgXihJAGAgq8k7ZTgeEPBAPIMeP~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=mbuZvsrxrZGIy2x7QYWaqFqSd5Q%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785',tag:'记者找到King'},{url:'https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/o8rMAD1IiAFHJnXfBgywo8TVfH7TeA31EQGEAd~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=r92NCEKOokUNIh8J4o%2FykAjGaWU%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785',tag:'"永远不会再出现"'},{url:'https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/ow8AIEIPqPGA7RgXqZAnL9hJek8APTgBeMQvQe~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=0EK0M2NloNMskld8APfOqdbM2vs%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785',tag:'陪初恋女友过一生'},{url:'https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/oUPTEhBAIvqLnPeA4gvQ8MZA7qQMGJAkBefgX8~tplv-dy-aweme-images:q75.webp?lk3s=138a59ce&x-expires=1783681200&x-signature=fbuIzJENeBm27%2Bi3%2FZiVr3GOFRA%3D&from=327834062&s=PackSourceEnum_AWEME_DETAIL&se=false&sc=image&biz_tag=aweme_images&l=20260610194737374266DBAF71A4AAC785',tag:'King · 传说永存'}];
+const gallery=document.getElementById('photoGallery');
+photos.forEach(p=>{let item=document.createElement('div');item.className='gallery-item';item.innerHTML=`<img src="${p.url}" alt="King" loading="lazy" onerror="this.parentElement.innerHTML='<div style=font-size:40px>📸</div><span class=tag>${p.tag}</span>'"><div class="glitch-overlay"></div><span class="tag">${p.tag}</span>`;gallery.appendChild(item)});
+// Re-bind 3D tilt
+gallery.querySelectorAll('.gallery-item').forEach(card=>{card.addEventListener('mousemove',e=>{let rect=card.getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top,cx=rect.width/2,cy=rect.height/2;card.style.transform=`translateY(-8px) scale(1.03) perspective(800px) rotateX(${((y-cy)/cy)*-12}deg) rotateY(${((x-cx)/cx)*12}deg)`});card.addEventListener('mouseleave',()=>{card.style.transform=''})});
 })();
 </script>
 </body>
