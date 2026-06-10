@@ -477,9 +477,8 @@ footer .heart{color:var(--crimson)}
 </main>
 
 <!-- Audio -->
-<!-- Audio -->
-<audio id="bgm" loop preload="auto" src="bgm.m4a"></audio>
-<div class="audio-fab" id="audioBtn" title="播放">♪</div>
+<audio id="bgm" loop preload="metadata" playsinline src="bgm.m4a"></audio>
+<div class="audio-fab" id="audioBtn" title="加载中…">♫</div>
 
 <script>
 // ═══════════════ PARTICLE SYSTEM ═══════════════
@@ -632,14 +631,38 @@ document.querySelectorAll('.gallery-item').forEach(card => {
 const bgm = document.getElementById('bgm');
 const audioBtn = document.getElementById('audioBtn');
 let playing = false;
+let audioReady = false;
+
+bgm.addEventListener('loadedmetadata', () => {
+  audioReady = true;
+  audioBtn.title = '播放';
+});
+bgm.addEventListener('waiting', () => {
+  audioBtn.textContent = '…';
+});
+bgm.addEventListener('canplay', () => {
+  if (!playing) audioBtn.textContent = '♪';
+});
+bgm.addEventListener('error', (e) => {
+  console.error('Audio error:', e);
+  audioBtn.textContent = '!';
+  audioBtn.title = '加载失败 - 点击重试';
+});
 
 function play() {
   if (playing) return;
+  if (!audioReady) {
+    bgm.load();
+    return;
+  }
   bgm.play().then(() => {
     playing = true;
     audioBtn.classList.add('playing');
     audioBtn.textContent = '♪';
-  }).catch(() => {});
+  }).catch(() => {
+    // Retry on next interaction
+    audioBtn.textContent = '▶';
+  });
 }
 
 function pause() {
@@ -649,7 +672,7 @@ function pause() {
   audioBtn.textContent = '♫';
 }
 
-// Try after 3s (may be blocked), fallback on user interaction
+// Try after 3s, fallback on user interaction
 setTimeout(play, 3000);
 ['click','scroll','touchstart','keydown'].forEach(ev => {
   document.addEventListener(ev, play, { once: true });
@@ -657,6 +680,7 @@ setTimeout(play, 3000);
 
 audioBtn.addEventListener('click', e => {
   e.stopPropagation();
+  if (!audioReady) { bgm.load(); return; }
   playing ? pause() : play();
 });
 
