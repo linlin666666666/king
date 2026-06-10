@@ -138,38 +138,77 @@ footer .heart{color:var(--crimson)}
 35%{opacity:.6;transform:translate(calc(-50% - 2px),calc(-50% + 1px)) scale(.9)}
 100%{opacity:0;transform:translate(-50%,calc(-50% - 45px)) scale(.7)}}
 
-/* ── Mobile ── */
+/* ── Mobile (completely separate layout) ── */
 @media(max-width:768px){
-  nav{padding:10px 14px}
+  /* Nav */
+  nav{padding:8px 12px;background:rgba(5,5,5,.95)!important}
   .nav-links{display:none}
-  .nav-logo{font-size:16px;letter-spacing:4px}
-  section{padding:40px 14px;max-width:100%}
-  .hero{padding:60px 14px;min-height:80vh}
-  .hero-crown{font-size:44px}
-  .hero-title{font-size:clamp(36px,12vw,56px);letter-spacing:8px}
-  .hero-sub{font-size:12px;letter-spacing:3px}
-  .hero-quote{font-size:11px;max-width:280px}
-  .section-title{font-size:clamp(20px,5vw,28px)}
-  .section-num{font-size:9px}
-  .gallery{grid-template-columns:repeat(3,1fr);gap:4px}
-  .gallery-item .tag{font-size:7px;padding:4px 6px}
-  #leftBg{width:100vw;opacity:.35}#leftBg::after{background:radial-gradient(ellipse at 85% 50%,rgba(5,5,5,.35) 0%,transparent 60%),linear-gradient(to top,rgba(5,5,5,.25) 0%,transparent 20%,transparent 80%,rgba(5,5,5,.25) 100%)}
-  .timeline{padding-left:20px}
-  .timeline-item::before{left:-25px;width:7px;height:7px}
-  .timeline-title{font-size:14px}
-  .timeline-desc{font-size:11px}
-  .comment{padding:12px 14px}
-  .comment-text{font-size:11px}
-  .dark-section{padding:40px 14px!important}
-  footer p{font-size:9px}
-  .audio-fab{bottom:16px;right:16px;width:40px;height:40px;font-size:16px}
-  /* Lyrics on mobile - subtle right edge */
-  .lyrics-panel{display:block!important;right:2vw;width:32vw;max-width:200px;min-width:110px;padding:0 6px;transform:translateY(-50%) perspective(500px) rotateY(-5deg)!important}
-  .lyric-line{font-size:13px!important;line-height:2.2}
-  .lyric-line.past{font-size:11px!important}
-  .lyric-line.current{font-size:16px!important}
+  .nav-logo{font-size:14px;letter-spacing:3px}
+
+  /* Left BG → top horizontal strip */
+  #leftBg{width:100vw;height:35vh;top:40px;opacity:.5;mask-image:none;-webkit-mask-image:none}
+  #leftBg::after{background:linear-gradient(to bottom,rgba(5,5,5,.2) 0%,rgba(5,5,5,0) 30%,rgba(5,5,5,0) 70%,rgba(5,5,5,.8) 100%)}
+
+  /* Hero overlay on top of bg */
+  .hero{min-height:55vh;padding:20px 16px;justify-content:flex-end;padding-bottom:30px}
+  .hero-crown{font-size:36px}
+  .hero-title{font-size:42px;letter-spacing:6px}
+  .hero-sub{font-size:11px;letter-spacing:3px;margin-bottom:16px}
+  .hero-quote{font-size:10px;max-width:260px;line-height:1.8}
+
+  /* Sections as full-width cards */
+  section{padding:32px 14px;max-width:100%}
+  .section-title{font-size:22px;letter-spacing:2px}
+  .section-num{font-size:9px;letter-spacing:3px}
+  .section-divider{width:36px;margin:10px 0 20px}
+  .dark-section{padding:32px 14px!important}
+
+  /* Timeline */
+  .timeline{padding-left:16px}
+  .timeline-item{margin-bottom:20px}
+  .timeline-item::before{left:-20px;width:6px;height:6px}
+  .timeline-year{font-size:9px}
+  .timeline-title{font-size:13px}
+  .timeline-desc{font-size:10px;line-height:1.7}
+
+  /* Gallery */
+  .gallery{grid-template-columns:repeat(2,1fr);gap:4px}
+  .gallery-item .tag{font-size:7px;padding:3px 5px}
+
+  /* Comments */
+  .comment{padding:10px 12px;gap:8px}
+  .comment-avatar{width:24px;height:24px;font-size:10px}
+  .comment-text{font-size:10px;line-height:1.5}
+  .comment-user{font-size:10px}
+  .comment-likes{font-size:9px}
+
   /* EXO crown */
-  .exo-crown{font-size:30px}
+  .exo-crown{font-size:28px;margin:20px 0}
+
+  /* Lyrics → fixed bottom-right overlay */
+  .lyrics-panel{
+    display:block!important;
+    position:fixed;bottom:80px;right:8px;top:auto;left:auto;
+    width:auto;max-width:55vw;min-width:0;height:auto;max-height:35vh;
+    padding:8px 10px;text-align:right;
+    background:rgba(5,5,5,.75);border-radius:8px;
+    border:1px solid rgba(184,146,78,.1);
+    transform:none!important;
+    mask-image:none;-webkit-mask-image:none;
+    overflow-y:auto;
+    pointer-events:auto;
+    z-index:50;
+  }
+  .lyric-line{font-size:12px!important;line-height:2}
+  .lyric-line.past{font-size:10px!important}
+  .lyric-line.current{font-size:14px!important}
+
+  /* Audio button */
+  .audio-fab{bottom:20px;left:50%;right:auto;transform:translateX(-50%);width:44px;height:44px;font-size:18px;z-index:200}
+
+  /* Footer */
+  footer{padding:30px 14px}
+  footer p{font-size:9px}
 }
 
 /* ── Scroll reveal ── */
