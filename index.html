@@ -153,7 +153,7 @@ footer .heart{color:var(--crimson)}
   .section-num{font-size:9px}
   .gallery{grid-template-columns:repeat(3,1fr);gap:4px}
   .gallery-item .tag{font-size:7px;padding:4px 6px}
-  #leftBg{width:100vw;opacity:.18}
+  #leftBg{width:100vw;opacity:.35}#leftBg::after{background:radial-gradient(ellipse at 85% 50%,rgba(5,5,5,.35) 0%,transparent 60%),linear-gradient(to top,rgba(5,5,5,.25) 0%,transparent 20%,transparent 80%,rgba(5,5,5,.25) 100%)}
   .timeline{padding-left:20px}
   .timeline-item::before{left:-25px;width:7px;height:7px}
   .timeline-title{font-size:14px}
@@ -164,10 +164,10 @@ footer .heart{color:var(--crimson)}
   footer p{font-size:9px}
   .audio-fab{bottom:16px;right:16px;width:40px;height:40px;font-size:16px}
   /* Lyrics on mobile - subtle right edge */
-  .lyrics-panel{display:block!important;right:1vw;width:28vw;max-width:120px;min-width:80px;padding:0 4px}
-  .lyric-line{font-size:11px!important;line-height:2}
-  .lyric-line.past{font-size:9px!important}
-  .lyric-line.current{font-size:13px!important}
+  .lyrics-panel{display:block!important;right:2vw;width:32vw;max-width:200px;min-width:110px;padding:0 6px;transform:translateY(-50%) perspective(500px) rotateY(-5deg)!important}
+  .lyric-line{font-size:13px!important;line-height:2.2}
+  .lyric-line.past{font-size:11px!important}
+  .lyric-line.current{font-size:16px!important}
   /* EXO crown */
   .exo-crown{font-size:30px}
 }
