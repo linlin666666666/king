@@ -10,8 +10,8 @@
 body{background:#000;overflow:hidden;font-family:"PingFang SC","Microsoft YaHei",sans-serif}
 
 /* Full screen mirrored camera */
-#videoBg{position:fixed;inset:0;z-index:0;object-fit:cover;transform:scaleX(-1);filter:brightness(.7) saturate(.8)}
-#darkVeil{position:fixed;inset:0;z-index:1;background:radial-gradient(ellipse at center,transparent 30%,rgba(0,0,0,.5) 100%)}
+#videoBg{position:fixed;inset:0;z-index:0;object-fit:cover;transform:scaleX(-1);width:100vw;height:100vh;min-width:100vw;min-height:100vh}
+#darkVeil{position:fixed;inset:0;z-index:1;background:radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,.35) 100%)}
 
 /* Particles on top */
 #particleCanvas{position:fixed;inset:0;z-index:2;pointer-events:none}
@@ -197,8 +197,8 @@ document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY});
 document.addEventListener('touchmove',e=>{mouseX=e.touches[0].clientX;mouseY=e.touches[0].clientY},{passive:true});
 
 function draw(){
-  // Clear with slight trail
-  pCtx.fillStyle='rgba(0,0,0,.08)';
+  // Clear with very light trail so camera stays visible
+  pCtx.fillStyle='rgba(0,0,0,.04)';
   pCtx.fillRect(0,0,pCanvas.width,pCanvas.height);
   detectMotion();
   particles.forEach(p=>{p.update(mouseX,mouseY);p.draw()});
