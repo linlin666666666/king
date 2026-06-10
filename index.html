@@ -139,7 +139,38 @@ footer .heart{color:var(--crimson)}
 100%{opacity:0;transform:translate(-50%,calc(-50% - 45px)) scale(.7)}}
 
 /* ── Mobile ── */
-@media(max-width:600px){nav{padding:10px 14px}.nav-links{display:none}section{padding:50px 14px}.hero{padding:50px 14px}.gallery{grid-template-columns:repeat(2,1fr);gap:6px}#leftBg{width:100vw;opacity:.5}}
+@media(max-width:768px){
+  nav{padding:10px 14px}
+  .nav-links{display:none}
+  .nav-logo{font-size:16px;letter-spacing:4px}
+  section{padding:40px 14px;max-width:100%}
+  .hero{padding:60px 14px;min-height:80vh}
+  .hero-crown{font-size:44px}
+  .hero-title{font-size:clamp(36px,12vw,56px);letter-spacing:8px}
+  .hero-sub{font-size:12px;letter-spacing:3px}
+  .hero-quote{font-size:11px;max-width:280px}
+  .section-title{font-size:clamp(20px,5vw,28px)}
+  .section-num{font-size:9px}
+  .gallery{grid-template-columns:repeat(3,1fr);gap:4px}
+  .gallery-item .tag{font-size:7px;padding:4px 6px}
+  #leftBg{width:100vw;opacity:.18}
+  .timeline{padding-left:20px}
+  .timeline-item::before{left:-25px;width:7px;height:7px}
+  .timeline-title{font-size:14px}
+  .timeline-desc{font-size:11px}
+  .comment{padding:12px 14px}
+  .comment-text{font-size:11px}
+  .dark-section{padding:40px 14px!important}
+  footer p{font-size:9px}
+  .audio-fab{bottom:16px;right:16px;width:40px;height:40px;font-size:16px}
+  /* Lyrics on mobile - subtle right edge */
+  .lyrics-panel{display:block!important;right:1vw;width:28vw;max-width:120px;min-width:80px;padding:0 4px}
+  .lyric-line{font-size:11px!important;line-height:2}
+  .lyric-line.past{font-size:9px!important}
+  .lyric-line.current{font-size:13px!important}
+  /* EXO crown */
+  .exo-crown{font-size:30px}
+}
 
 /* ── Scroll reveal ── */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
@@ -191,9 +222,6 @@ footer .heart{color:var(--crimson)}
   55%{transform:translateY(-50%) perspective(700px) rotateY(-8deg) translateX(0.5px)}
   72%{transform:translateY(-50%) perspective(700px) rotateY(-8deg) translateX(-0.2px)}
   100%{transform:translateY(-50%) perspective(700px) rotateY(-8deg) translateX(0)}
-}
-@media(max-width:600px){
-  .lyrics-panel{display:none}
 }
 
 /* ── Left parallax background ── */
