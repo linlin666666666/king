@@ -10,8 +10,8 @@
 body{background:#000;overflow:hidden;font-family:"PingFang SC","Microsoft YaHei",sans-serif}
 
 /* Full screen mirrored camera */
-#videoBg{position:fixed;inset:0;z-index:0;object-fit:cover;transform:scaleX(-1);width:100vw;height:100vh;min-width:100vw;min-height:100vh}
-#darkVeil{position:fixed;inset:0;z-index:1;background:radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,.35) 100%)}
+#videoBg{position:fixed;inset:0;z-index:0;object-fit:cover;transform:scaleX(-1);width:100vw;height:100vh;min-width:100vw;min-height:100vh;background:#111}
+#darkVeil{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.3) 100%)}
 
 /* Particles on top */
 #particleCanvas{position:fixed;inset:0;z-index:2;pointer-events:none}
@@ -31,7 +31,7 @@ button.active{background:rgba(184,146,78,.25);border-color:var(--gold);color:var
 </style>
 </head>
 <body>
-<video id="videoBg" autoplay playsinline style="display:block"></video>
+<video id="videoBg" autoplay playsinline muted style="display:block;background:#111"></video>
 <div id="darkVeil"></div>
 <canvas id="motionCanvas"></canvas>
 <canvas id="particleCanvas"></canvas>
@@ -78,6 +78,8 @@ async function startCamera(){
     const stream=await navigator.mediaDevices.getUserMedia({video:{width:{ideal:1280},height:{ideal:720},facingMode:'user'}});
     video.srcObject=stream;
     video.style.display='block';
+    video.onloadedmetadata=()=>{console.log('Video ready:',video.videoWidth,'x',video.videoHeight)};
+    video.onplaying=()=>{console.log('Video playing')};
     await video.play();
     cameraActive=true;
     prompt.classList.add('hidden');
