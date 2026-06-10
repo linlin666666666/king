@@ -31,7 +31,7 @@ button.active{background:rgba(184,146,78,.25);border-color:var(--gold);color:var
 </style>
 </head>
 <body>
-<video id="videoBg" autoplay playsinline muted></video>
+<video id="videoBg" autoplay playsinline style="display:block"></video>
 <div id="darkVeil"></div>
 <canvas id="motionCanvas"></canvas>
 <canvas id="particleCanvas"></canvas>
@@ -73,17 +73,22 @@ resize();window.addEventListener('resize',resize);
 // Camera
 async function startCamera(){
   try{
-    const stream=await navigator.mediaDevices.getUserMedia({video:{width:1280,height:720,facingMode:'user'}});
+    prompt.textContent='正在请求摄像头...';
+    prompt.classList.remove('hidden');
+    const stream=await navigator.mediaDevices.getUserMedia({video:{width:{ideal:1280},height:{ideal:720},facingMode:'user'}});
     video.srcObject=stream;
+    video.style.display='block';
     await video.play();
     cameraActive=true;
     prompt.classList.add('hidden');
     document.getElementById('btnCamera').classList.add('active');
     document.getElementById('btnCamera').textContent='📷 ON';
+    statusEl.textContent='摄像头已连接';
     showModeName();
   }catch(e){
-    statusEl.textContent='需要摄像头权限';
-    prompt.textContent='请在浏览器设置中允许摄像头权限后刷新';
+    console.error('Camera error:',e);
+    statusEl.textContent='权限被拒绝';
+    prompt.textContent='摄像头权限被拒绝。请在浏览器设置中开启后刷新页面';
     prompt.classList.remove('hidden');
   }
 }
